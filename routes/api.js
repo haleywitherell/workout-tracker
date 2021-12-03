@@ -12,7 +12,11 @@ router.post("/", ({ body }, res) => {
       });
   });
 
-// create new exercise route 
+// continue workout route
+
+// fitness tracker route
+
+// dashboard route 
 
 
 module.exports = router;
