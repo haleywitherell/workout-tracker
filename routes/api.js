@@ -23,9 +23,5 @@ router.get("/", (req, res) => {
       });
   });
 
-// fitness tracker route
-
-// dashboard route 
-
 
 module.exports = router;
