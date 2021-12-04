@@ -13,6 +13,15 @@ router.post("/", ({ body }, res) => {
   });
 
 // continue workout route
+router.get("/", (req, res) => {
+    Workout.find({})
+      .then((Workout) => {
+        res.json(Workout);
+      })
+      .catch((err) => {
+        res.status(400);
+      });
+  });
 
 // fitness tracker route
 
