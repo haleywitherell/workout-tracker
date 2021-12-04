@@ -18,9 +18,7 @@ Haley Witherell
 
 ## Deployed Links 
 
-Deployed Link:
-
-Herouku Link: 
+Herouku Link: https://workout-tracker-app-12345.herokuapp.com/
 
 ## Questions
 
