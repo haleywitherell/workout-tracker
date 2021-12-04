@@ -8,6 +8,9 @@ For this assignment I set up the back end of a foitness tracker. When using this
 
 ## Installation Instructions
 
+Run the following commands in terminal to see the application in localhost:3000
+
+npm i, npm run seed, npm start
 
 ## Contribution Guidelines
 
