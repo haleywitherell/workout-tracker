@@ -4,7 +4,7 @@
 
 See a short description of my project below.
 
-For this assignment I set up the back end of a foitness tracker. When using this app you will be able to add exercises to the most recent workout plan, add new exercises to a new workout plan, view the combined weight of multiple exercises from the past seven workouts on the stats page, and view the total duration of each workout from the past seven workouts on the stats page.
+For this assignment I set up the back end of a fitness tracker. When using this app you will be able to add exercises to the most recent workout plan, add new exercises to a new workout plan, view the combined weight of multiple exercises from the past seven workouts on the stats page, and view the total duration of each workout from the past seven workouts on the stats page.
 
 ## Installation Instructions
 
