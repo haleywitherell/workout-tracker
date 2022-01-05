@@ -46,7 +46,7 @@ router.get("/api/workouts/range", (req, res) => {
   }])
   .limit(7)
   .then(workout => {
-    res.json(workout);
+    res.json(workout); 
   })
   .catch(err => {
     res.status(400).json(err);
