@@ -12,62 +12,45 @@ router.post("/", ({ body }, res) => {
       });
   });
 
-// workout summary
-router.get("/", (req, res) => {
-  Workout.aggregate([
-      {
-          $addFields: {
-              totalDuration: {
-                  $sum: '$exercises.duration'
-              },
-          },
-      },
-  ])
-      .then((workout) => {
-          console.log('workout summary', workout)
-          res.json(workout)
-      })
-      .catch((err) => {
-          res.json(err)
-      })
+// previous workouts
+router.get("/api/workouts", (req, res) => {
+  db.Workout.find({})
+   .then(dbWorkout => {
+     res.json(dbWorkout);
+   })
+   .catch(err => {
+      res.status(400).json(err);
+   });
+ });
+
+ // add exercise
+router.put("/api/workouts/:id", (req, res) => {
+  db.Workout.findByIdAndUpdate(
+    req.params.id,
+    { $push: { exercises: req.body } },
+    { new: true, runValidators: true })
+  .then(dbWorkout => {
+    res.json(dbWorkout);
+  }).catch(err => {
+    res.json(err);
+  });
 });
 
-// new exercise
-router.put("/:id", (req, res) => {
-  console.log('PARAMS', req.params)
-  Workout.findByIdAndUpdate(
-      req.params.id,
-      { $push: { exercises: req.body } },
-      { new: true, runValidators: true }
-  )
-      .then((workout) => {
-        res.json(workout)
-      })
-      .catch((err) => {
-          res.json(err)
-      })
-});
-
-// stats
-router.get(`/range`, (req, res) => {
-  Workout.aggregate([
-      {
-          $addFields: {
-              totalDuration:
-                  { $sum: '$exercises.duration' },
-              totalWeight:
-                  { $sum: '$exercises.weight' }
-          }
-      }
-  ])
-      .limit(10)
-      .then((workout) => {
-          console.log('display stats', workout)
-          res.json(workout)
-      })
-      .catch((e) => {
-          res.json(e);
-      })
+// workout summary 
+router.get("/api/workouts/range", (req, res) => {
+  db.Workout.aggregate([{
+    $addfields: {
+      totalDuration: {$sum: '$exercises.duration'},
+      totalWeight: {$sum:'$exercises.weight'},
+    }
+  }])
+  .limit(7)
+  .then(dbWorkout => {
+    res.json(dbWorkout);
+  })
+  .catch(err => {
+    res.status(400).json(err);
+  });
 });
 
 module.exports = router;
